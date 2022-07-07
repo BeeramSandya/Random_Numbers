@@ -228,6 +228,35 @@ return temp;
 }
 //End function for calculating the mean of random numbers
 
+//Defining the function for calculation the mean of squares of random numbers
+double mean2(char *str)
+{
+int i=0,c;
+FILE *fp;
+double x, temp=0.0;
+
+fp = fopen(str, "r");
+//get numbers from file
+while(fscanf(fp,"%lf",&x)!=EOF)
+{
+//count numbers in file
+i = i+1;
+temp = temp+x*x;
+}
+fclose(fp);
+temp = temp/(i-1);
+return temp;
+}
+//end of the function
+
+// Defining the function for calculating the variance of random numbers
+double variance(char *str)
+{
+double y;
+y = mean2(str) - mean(str)*mean(str);
+return y;
+}
+
 //Defining the function for generating Gaussian random numbers
 void gaussian(char *str, int len)
 {
