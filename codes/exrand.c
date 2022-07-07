@@ -13,7 +13,12 @@ uniform("uni.dat", 1000000);
 gaussian("gau.dat", 1000000);
 
 //Mean of uniform
-printf("%lf",mean("uni.dat"));
+printf(" Mean of Uniform Distribution is %lf \n",mean("uni.dat"));
+
+//Variance of uniform
+printf("Variance of Uniform Distribution is %lf \n",variance("uni.dat"));
 return 0;
 }
+
+
 
