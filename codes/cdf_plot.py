@@ -15,7 +15,7 @@ simlen = int(1e6) #number of samples
 err = [] #declaring probability list
 #randvar = np.random.normal(0,1,simlen)
 randvar = np.loadtxt('uni.dat',dtype='double')
-#randvar = np.loadtxt('gau.dat',dtype='double')
+randvar = np.loadtxt('gau.dat',dtype='double')
 for i in range(0,30):
 	err_ind = np.nonzero(randvar < x[i]) #checking probability condition
 	err_n = np.size(err_ind) #computing the probability
@@ -28,22 +28,23 @@ def uni_cdf(x):
 		return 1
 	else:
 		return x
-uni_func = scipy.vectorize(uni_cdf, otypes=['double'])			
-plt.plot(x.T,err,'o')#plotting the CDF
-plt.plot(x,uni_func(x))
+#uni_func = scipy.vectorize(uni_cdf, otypes=['double'])			
+#plt.plot(x.T,err,'o')#plotting the CDF
+plt.plot(x.T,err) #plotting the CDF
+#plt.plot(x,uni_func(x))
 plt.grid() #creating the grid
 plt.xlabel('$x$')
 plt.ylabel('$F_X(x)$')
-plt.legend(["Numerical","Theory"])
+#plt.legend(["Numerical","Theory"])
 
 
 #if using termux
-plt.savefig('../figs/uni_cdf.pdf')
-plt.savefig('../figs/uni_cdf.eps')
+#plt.savefig('../figs/uni_cdf.pdf')
+#plt.savefig('../figs/uni_cdf.eps')
 #subprocess.run(shlex.split("termux-open ../figs/uni_cdf.pdf"))
 #if using termux
-#plt.savefig('../figs/gauss_cdf.pdf')
-#plt.savefig('../figs/gauss_cdf.eps')
+plt.savefig('../figs/gauss_cdf.pdf')
+plt.savefig('../figs/gauss_cdf.eps')
 #subprocess.run(shlex.split("termux-open ../figs/gauss_cdf.pdf"))
 #else
 plt.show() #opening the plot window
